@@ -1,5 +1,7 @@
 <div align="center">
 
+![Ahmed Bux — AI Specialist, SaaS Project Analyst, Cybersecurity Professional](assets/banner.png)
+
 # Ahmed Bux — Portfolio
 
 **AI Specialist · SaaS Project Analyst · Cybersecurity Professional**
@@ -28,6 +30,12 @@ This repository contains the complete source of the live portfolio website: a si
 - **Interactive AI demo** — an on-page assistant that answers questions about Ahmed's services and projects from the facts on the page
 - **Direct conversion paths** — WhatsApp deep links on every service, share buttons, and a copy-email action
 
+## Preview
+
+![Live portfolio — hero](docs/screenshot.png)
+
+<div align="center"><em>The live site — <a href="https://ahmed-bux-portfolio.vercel.app/">ahmed-bux-portfolio.vercel.app</a></em></div>
+
 ## Featured Projects
 
 | Project | What it is | Status |
@@ -45,6 +53,16 @@ This repository contains the complete source of the live portfolio website: a si
 4. **Linux & Server Security** — RHEL administration, patching and hardening
 5. **Penetration Testing & Audits** — vulnerability assessment and web pen testing
 6. **Cloud Security & Hardening** — AWS configuration review and access control
+
+## Tech Stack
+
+![HTML5](https://img.shields.io/badge/HTML5-single--file-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-embedded-1572B6?style=flat-square&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-vanilla-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Vercel](https://img.shields.io/badge/Vercel-hosting%20%2B%20serverless-000000?style=flat-square&logo=vercel&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-Postgres%20%2B%20RLS-3FCF8E?style=flat-square&logo=supabase&logoColor=white)
+![Resend](https://img.shields.io/badge/Resend-email%20delivery-000000?style=flat-square&logo=resend&logoColor=white)
+![Three.js](https://img.shields.io/badge/Three.js-3D%20globe-000000?style=flat-square&logo=threedotjs&logoColor=white)
 
 ## How It Works
 
@@ -65,7 +83,10 @@ Visitor ──▶ Vercel (static site, index.html)
 ahmed-bux-portfolio/
 ├── index.html            # The complete website (single file)
 ├── assets/
-│   └── portrait.jpg      # Portrait used for social-share previews (og:image)
+│   ├── portrait.jpg      # Portrait used for social-share previews (og:image)
+│   └── banner.png        # README / social banner (1280×640)
+├── docs/
+│   └── screenshot.png    # Live-site screenshot used in this README
 ├── api/
 │   └── contact.js        # Serverless contact endpoint (Supabase + Resend)
 ├── supabase/
@@ -74,6 +95,7 @@ ahmed-bux-portfolio/
 ├── .env.example          # Required environment variable names
 ├── .gitignore
 ├── LICENSE
+├── SECURITY.md
 └── README.md
 ```
 
