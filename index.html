@@ -133,7 +133,7 @@ nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.82);backdrop-f
 /* SERVICES */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
 .svc{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;position:relative}
-.svc:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--line2)}
+
 .svc-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .svc-id{display:flex;align-items:center;gap:11px;font-size:12px;font-weight:800;letter-spacing:.13em;color:var(--violet2)}
 .svc-id .ic{width:42px;height:42px;border-radius:13px;background:var(--fill);display:grid;place-items:center;color:var(--violet2)}
@@ -150,7 +150,7 @@ nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.82);backdrop-f
 /* WORK */
 .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
 .work-card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease}
-.work-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+
 .cover{height:190px;background:linear-gradient(135deg,#4A1D4E,#7C3AED 55%,#A855F7);position:relative;padding:18px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;overflow:hidden}
 .cover::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px);background-size:30px 30px}
 .cover .row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;position:relative;z-index:1}
@@ -365,9 +365,107 @@ footer li a:hover{color:var(--violet2)}
   .float-wa{padding:12px 17px;font-size:13.5px}
   .float-ask{padding:12px 17px;font-size:13.5px}
 }
+
+/* ===== v2 enhancements ===== */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:90;box-shadow:0 0 12px rgba(147,51,234,.5)}
+nav{transition:box-shadow .3s ease,background .3s ease}
+nav.scrolled{box-shadow:0 10px 30px rgba(76,29,149,.08);background:rgba(255,255,255,.92)}
+.grad{background-size:200% auto;animation:gradShift 7s linear infinite}
+@keyframes gradShift{to{background-position:200% center}}
+.hero::before{animation:drift 16s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-2%,3%,0) scale(1.06)}}
+.hero>.spot{position:absolute;z-index:0;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,.20),rgba(236,72,153,.06) 45%,transparent 70%);pointer-events:none;transform:translate(-50%,-50%);opacity:0;transition:opacity .45s ease;top:0;left:0}
+.hero .photo-card img{animation:bob 7s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.hero .avail-pill,.hero h1,.hero .intro,.hero .hero-cta,.hero .photo-card,.hero .stats{animation-fill-mode:backwards}
+.reveal.in{animation-fill-mode:backwards}
+.photo-card{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .35s ease,box-shadow .35s ease}
+.svc,.work-card{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--lift,0px));transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s ease,border-color .35s ease}
+.svc:hover,.work-card:hover{--lift:-6px;box-shadow:var(--shadow-lg);border-color:var(--line2)}
+.svc.reveal.in,.work-card.reveal.in,.case.reveal.in{animation-delay:var(--d,0ms)}
+.svc:after,.work-card:after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(168,85,247,.10),transparent 45%);opacity:0;transition:opacity .3s ease;pointer-events:none}
+.svc:hover:after,.work-card:hover:after{opacity:1}
+.svc,.work-card{position:relative;overflow:hidden}
+.work-card .cover{position:relative}
+.ticker{margin-top:64px;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:18px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ticker-track{display:flex;width:max-content;animation:tick 38s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.tg{display:flex;align-items:center;gap:20px;padding-right:20px}
+.tg span{display:inline-flex;align-items:center;gap:20px;font-weight:800;font-size:15px;letter-spacing:-.01em;color:var(--slate2);white-space:nowrap}
+.tg span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--grad);flex:none}
+@keyframes tick{to{transform:translateX(-50%)}}
+.sec-head .eyebrow{transition:transform .3s ease}
+.sec-head:hover .eyebrow{transform:translateY(-2px)}
+.btn-plum,.btn-white{transition:transform .25s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease,color .25s ease}
+.cs-box{transition:transform .3s ease}
+.case:hover .cs-box{transform:translateY(-2px)}
+.metric{transition:transform .3s ease,border-color .3s ease}
+.metric:hover{transform:translateY(-3px);border-color:var(--violet3)}
+.tech{transition:transform .2s ease,border-color .2s ease,color .2s ease}
+.tech:hover{transform:translateY(-2px);border-color:var(--violet3);color:var(--violet2)}
+.stat{transition:background .3s ease}
+.stat:hover{background:#FBFAFF}
+.faq{transition:box-shadow .3s ease,border-color .3s ease}
+.faq:hover{box-shadow:var(--shadow-lg)}
+.float-ask:hover,.float-wa:hover{box-shadow:0 18px 38px rgba(74,29,78,.4)}
+@media (prefers-reduced-motion:reduce){
+  .grad,.ticker-track,.hero::before,.hero .photo-card img{animation:none!important}
+  .svc,.work-card,.photo-card{transform:none!important}
+}
+@media(max-width:600px){.hero>.spot{display:none}.ticker{margin-top:48px}}
+
+/* ===== v3 ===== */
+@property --ang{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes spinAng{to{--ang:360deg}}
+.rotator{margin-top:18px;font-size:17px;font-weight:600;color:var(--slate2);display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap}
+.rot-word{display:inline-block;min-width:12ch;text-align:left;background:var(--grad);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;transition:opacity .35s ease,transform .35s ease;animation:gradShift 7s linear infinite}
+.rot-word.out{opacity:0;transform:translateY(8px)}
+.sec-head h2{position:relative;display:inline-block}
+.sec-head h2::after{content:"";position:absolute;left:50%;bottom:-10px;height:4px;width:0;border-radius:99px;background:var(--grad);transform:translateX(-50%);transition:width .9s cubic-bezier(.22,.61,.36,1) .25s}
+.sec-head.in h2::after{width:72px}
+.sec-head h2{display:block}
+.sec-head h2::after{left:50%}
+.svc::before,.work-card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--ang),#7C3AED,#A855F7,#EC4899,#7C3AED);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .4s ease;pointer-events:none;z-index:2}
+.svc:hover::before,.work-card:hover::before{opacity:1;animation:spinAng 3.2s linear infinite}
+.work-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.work-card .cover::before{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-18deg);transition:left .9s ease;pointer-events:none;z-index:2}
+.work-card:hover .cover::before{left:130%}
+.cover.df{background:linear-gradient(135deg,#1E1B4B,#4338CA 50%,#EC4899)}
+.svc-id .ic,.stat .ic{transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+.svc:hover .svc-id .ic,.stat:hover .ic{transform:rotate(-8deg) scale(1.08)}
+.work-body h3,.svc h3{transition:color .3s ease}
+.work-card:hover .work-body h3{color:var(--violet2)}
+.stat b{background:linear-gradient(90deg,var(--ink),var(--violet2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.avail-pill i,.photo-card .avail i,.pill-avail i,.chat-head span i{animation:ping 2.2s ease-out infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}70%,100%{box-shadow:0 0 0 9px rgba(34,197,94,0)}}
+.cursor{position:fixed;left:0;top:0;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;border:1.5px solid var(--violet3);pointer-events:none;z-index:99;opacity:0;transition:width .25s ease,height .25s ease,margin .25s ease,background .25s ease,opacity .3s ease,border-color .25s ease;mix-blend-mode:multiply}
+.cursor.on{opacity:.9}
+.cursor.hot{width:56px;height:56px;margin:-28px 0 0 -28px;background:rgba(168,85,247,.10);border-color:var(--violet2)}
+.btn-plum{will-change:transform}
+.faq-q b{transition:color .3s ease}
+.faq-q:hover b{color:var(--violet2)}
+.link-violet svg,.link-plum svg,.link-view svg{transition:transform .3s ease}
+.link-violet:hover svg,.link-plum:hover svg{transform:translateX(4px)}
+.case{position:relative;overflow:hidden}
+.case::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--grad);transform:scaleY(0);transform-origin:top;transition:transform .5s cubic-bezier(.22,.61,.36,1)}
+.case:hover::before{transform:scaleY(1)}
+.testi{position:relative;overflow:hidden}
+.testi::after{content:"";position:absolute;inset:-1px;border-radius:inherit;background:radial-gradient(500px circle at 50% -20%,rgba(168,85,247,.12),transparent 60%);pointer-events:none}
+@media (prefers-reduced-motion:reduce){
+  .rot-word,.avail-pill i,.photo-card .avail i,.pill-avail i,.chat-head span i,.svc:hover::before,.work-card:hover::before{animation:none!important}
+  .cursor{display:none}
+}
+@media (hover:none){.cursor{display:none}}
+@media(max-width:1020px){.work-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.work-grid{grid-template-columns:1fr}.rotator{font-size:15px}}
 </style>
+<link rel="canonical" href="https://ahmed-bux-portfolio.vercel.app/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Ahmed Bux","jobTitle":"AI Specialist","description":"AI Specialist, SaaS Project Analyst and Cybersecurity Professional based in Sukkur, Sindh, Pakistan.","url":"https://ahmed-bux-portfolio.vercel.app/","email":"mailto:ahmedbux927@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Sukkur","addressRegion":"Sindh","addressCountry":"PK"},"sameAs":["https://www.linkedin.com/in/ahmed-bux-5a096a310","https://github.com/ahmedbux927"],"knowsAbout":["AI Automation","SaaS Project Analysis","SOC Operations","Elastic SIEM","Wazuh","Linux Security","Penetration Testing","Cloud Security"]}
+</script>
 </head>
 <body id="top">
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <nav>
   <div class="nav-in">
@@ -388,7 +486,8 @@ footer li a:hover{color:var(--violet2)}
   <header class="hero" id="home">
     <div class="hero-3d" id="hero3d" aria-hidden="true"></div>
     <span class="avail-pill"><i></i>Available for new projects · AI Specialist · SaaS Project Analyst · Cybersecurity</span>
-    <h1>Building Intelligent <span class="grad">AI Systems &amp; SaaS Products</span> That Businesses Trust.</h1>
+    <h1>AI, <span class="grad">SaaS</span> &amp; Security</h1>
+    <p class="rotator" aria-live="off">Currently focused on&nbsp;<span class="rot-word" id="rotWord">AI Automation</span></p>
     <p class="intro">Hi, I'm <b>Ahmed Bux</b> — I build AI automations, analyse SaaS products end to end, and secure every system behind them.</p>
     <div class="hero-cta">
       <a class="btn btn-plum" href="#contact"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>Start a Project</a>
@@ -407,21 +506,23 @@ footer li a:hover{color:var(--violet2)}
       <div class="stat"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><b data-count="7" data-suffix="K+">7K+</b><span>LinkedIn Followers — Cybersecurity Community</span></div></div>
       <div class="stat"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/></svg></span><div><b data-count="100" data-suffix="K">100K</b><span>Applicants — AdmitSecure Design Scale</span></div></div>
       <div class="stat"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div><b data-count="500" data-suffix="K">500K</b><span>Messages — Per Admissions Cycle</span></div></div>
-      <div class="stat"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></span><div><b data-count="2509" data-comma="1">2,509</b><span>Tests Passing — MediGen AI Pro · CI Green</span></div></div>
+      <div class="stat"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></span><div><b data-count="2300" data-comma="1">2,509</b><span>Tests Passing — MediGen AI Pro · CI Green</span></div></div>
     </div>
   </header>
+
+  <div class="ticker reveal" aria-label="Core skills"><div class="ticker-track"><div class="tg"><span>AI Automation</span><span>SaaS Analysis</span><span>SOC Operations</span><span>Elastic SIEM</span><span>Wazuh</span><span>Penetration Testing</span><span>Linux &amp; RHEL</span><span>AWS Security</span><span>Python</span><span>Gemini AI</span><span>ISO 27001</span><span>Digital Futures</span></div><div class="tg" aria-hidden="true"><span>AI Automation</span><span>SaaS Analysis</span><span>SOC Operations</span><span>Elastic SIEM</span><span>Wazuh</span><span>Penetration Testing</span><span>Linux &amp; RHEL</span><span>AWS Security</span><span>Python</span><span>Gemini AI</span><span>ISO 27001</span><span>Digital Futures</span></div></div></div>
 
   <!-- SERVICES -->
   <section id="services">
     <div class="sec-head reveal">
       <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Core Services</span>
-      <h2>Services I Offer: <span class="grad">AI, SaaS &amp; Security</span></h2>
+      <h2>Core <span class="grad">Services</span></h2>
       <p>AI automation, SaaS analysis and frontline security — scoped clearly, delivered professionally.</p>
     </div>
     <div class="svc-grid">
       <article class="svc reveal">
         <div class="svc-top"><span class="svc-id"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a7 7 0 0 1 7 7c0 2.4-1.2 4.2-2.6 5.4-.9.8-1.4 1.6-1.4 2.6H9c0-1-.5-1.8-1.4-2.6C6.2 14.2 5 12.4 5 10a7 7 0 0 1 7-7z"/><path d="M9 21h6"/></svg></span>Service 01</span><span class="pop">Most Popular</span></div>
-        <h3>AI Automation &amp; Smart Assistants</h3>
+        <h3>AI Automation</h3>
         <p class="tagline">Automations that save hours every week</p>
         <p>Assistants and workflows that triage, report and act — automatically.</p>
         <div class="svc-actions"><a class="link-plum" href="https://wa.me/923263044880?text=Hi%20Ahmed%2C%20I%27m%20interested%20in%20your%20AI%20Automation%20%26%20Smart%20Assistants%20service." target="_blank" rel="noopener">Inquire Now <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a class="link-view" href="#work">View Work</a></div>
@@ -435,28 +536,28 @@ footer li a:hover{color:var(--violet2)}
       </article>
       <article class="svc reveal">
         <div class="svc-top"><span class="svc-id"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><circle cx="12" cy="10" r="2.4"/></svg></span>Service 03</span><span class="cat">SOC</span></div>
-        <h3>SOC Operations &amp; Threat Detection</h3>
+        <h3>SOC Operations</h3>
         <p class="tagline">24/7 monitoring with Elastic SIEM &amp; Wazuh</p>
         <p>Alert triage, IDS tuning and threat-led detection — threats caught before they become incidents.</p>
         <div class="svc-actions"><a class="link-plum" href="https://wa.me/923263044880?text=Hi%20Ahmed%2C%20I%27m%20interested%20in%20your%20SOC%20Operations%20%26%20Threat%20Detection%20service." target="_blank" rel="noopener">Inquire Now <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a class="link-view" href="#work">View Work</a></div>
       </article>
       <article class="svc reveal">
         <div class="svc-top"><span class="svc-id"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="7" rx="2"/><rect x="2" y="14" width="20" height="7" rx="2"/><path d="M6 6.5h.01M6 17.5h.01"/></svg></span>Service 04</span><span class="cat">Linux</span></div>
-        <h3>Linux &amp; Server Security</h3>
+        <h3>Linux Security</h3>
         <p class="tagline">RHEL administration &amp; hardening</p>
         <p>Secure administration, patching and hardening for always-on operations.</p>
         <div class="svc-actions"><a class="link-plum" href="https://wa.me/923263044880?text=Hi%20Ahmed%2C%20I%27m%20interested%20in%20your%20Linux%20%26%20Server%20Security%20service." target="_blank" rel="noopener">Inquire Now <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a class="link-view" href="#work">View Work</a></div>
       </article>
       <article class="svc reveal">
         <div class="svc-top"><span class="svc-id"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></span>Service 05</span><span class="cat">Testing</span></div>
-        <h3>Penetration Testing &amp; Audits</h3>
+        <h3>Pen Testing</h3>
         <p class="tagline">Vulnerability assessment &amp; web pen testing</p>
         <p>Weaknesses found before attackers do — with clear, prioritised fixes.</p>
         <div class="svc-actions"><a class="link-plum" href="https://wa.me/923263044880?text=Hi%20Ahmed%2C%20I%27m%20interested%20in%20your%20Penetration%20Testing%20%26%20Audits%20service." target="_blank" rel="noopener">Inquire Now <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a class="link-view" href="#work">View Work</a></div>
       </article>
       <article class="svc reveal">
         <div class="svc-top"><span class="svc-id"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .4-8.98 6 6 0 0 0-11.7 1.62A4 4 0 0 0 7 19h10.5z"/></svg></span>Service 06</span><span class="cat">Cloud</span></div>
-        <h3>Cloud Security &amp; Hardening</h3>
+        <h3>Cloud Security</h3>
         <p class="tagline">AWS security, done properly</p>
         <p>Configuration review, access control and hardening — secure from day one.</p>
         <div class="svc-actions"><a class="link-plum" href="https://wa.me/923263044880?text=Hi%20Ahmed%2C%20I%27m%20interested%20in%20your%20Cloud%20Security%20%26%20Hardening%20service." target="_blank" rel="noopener">Inquire Now <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a class="link-view" href="#work">View Work</a></div>
@@ -468,21 +569,25 @@ footer li a:hover{color:var(--violet2)}
   <section id="work">
     <div class="sec-head reveal">
       <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Featured Work</span>
-      <h2>AI Products &amp; <span class="grad">Secure Systems</span></h2>
+      <h2>Featured <span class="grad">Work</span></h2>
       <p>Production systems, designed and built secure — from a live pharmacy ERP to an admissions platform.</p>
     </div>
     <div class="work-grid">
       <article class="work-card reveal">
         <div class="cover"><div class="row"><span class="tag">Secure Platform</span><span class="status blue">Design Blueprint</span></div><p class="mono">AS<small>ADMITSECURE</small></p></div>
-        <div class="work-body"><h3>AdmitSecure — Secure Admissions Platform</h3><p>Admissions communication with role-based access, separation-of-duties approvals and a PII-redacted AI assistant.</p><a class="link-violet" href="#cases">View Project Details <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+        <div class="work-body"><h3>AdmitSecure</h3><p>Admissions communication with role-based access, separation-of-duties approvals and a PII-redacted AI assistant.</p><a class="link-violet" href="#cases">View Project Details <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
       </article>
       <article class="work-card reveal">
         <div class="cover"><div class="row"><span class="tag">AI-Powered</span><span class="status">● Live</span></div><p class="mono">MG<small>MEDIGEN AI PRO</small></p></div>
-        <div class="work-body"><h3>MediGen AI Pro — Pharmacy ERP &amp; POS</h3><p>Pharmacy ERP &amp; POS live in production — billing, FEFO expiry control, cash drawer, Gemini AI assistant.</p><a class="link-violet" href="#cases">View Project Details <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+        <div class="work-body"><h3>MediGen AI Pro</h3><p>Pharmacy ERP &amp; POS live in production — billing, FEFO expiry control, cash drawer, Gemini AI assistant.</p><a class="link-violet" href="#cases">View Project Details <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
       </article>
       <article class="work-card reveal">
         <div class="cover"><div class="row"><span class="tag">Web Tool</span><span class="status">● Live</span></div><p class="mono">SD<small>STAMP DUTY CALCULATOR</small></p></div>
         <div class="work-body"><h3>Stamp Duty Calculator</h3><p>Accurate UK stamp duty in seconds — clean and mobile-first.</p><a class="link-violet" href="#cases">View Project Details <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      </article>
+      <article class="work-card reveal">
+        <div class="cover df"><div class="row"><span class="tag">Digital Platform</span><span class="status blue">● In Progress</span></div><p class="mono">DF<small>DIGITAL FUTURES</small></p></div>
+        <div class="work-body"><h3>Digital Futures</h3><p>A digital initiative in progress. Project overview and outcomes will be published here once confirmed.</p><a class="link-violet" href="#contact">Ask About This Project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </article>
     </div>
     <div class="center-cta reveal"><a class="btn btn-white" href="#cases">View All Projects <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
@@ -491,8 +596,8 @@ footer li a:hover{color:var(--violet2)}
   <!-- CASE STUDIES -->
   <section id="cases">
     <div class="sec-head reveal">
-      <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/></svg>Client Case Studies</span>
-      <h2>Real Projects, <span class="grad">Real Business Results</span></h2>
+      <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/></svg>Proof of Work</span>
+      <h2>Case <span class="grad">Studies</span></h2>
       <p>Real problems, solved — with measurable outcomes.</p>
     </div>
 
@@ -524,8 +629,8 @@ footer li a:hover{color:var(--violet2)}
   <!-- AI DEMO -->
   <section id="ai">
     <div class="sec-head reveal">
-      <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4M8 4h8"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg>24/7 Interactive AI Demo</span>
-      <h2>Have Questions About My Work? <span class="grad">Chat With My AI Assistant</span></h2>
+      <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4M8 4h8"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg>Live Demo</span>
+      <h2>Ask My <span class="grad">AI</span></h2>
       <p>Trained on the facts on this page. Ask anything — answers in seconds.</p>
     </div>
     <div class="ai-grid">
@@ -542,7 +647,7 @@ footer li a:hover{color:var(--violet2)}
       <div class="chat-card reveal">
         <div class="chat-head">
           <span class="av"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4M8 4h8"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg></span>
-          <div><b>Ahmed's Portfolio AI Assistant</b><span><i></i>Online · Trained on Real Projects</span></div>
+          <div><b>Ahmed's AI</b><span><i></i>Online · Trained on Real Projects</span></div>
           <span class="demo-tag">Demo Assistant</span>
         </div>
         <div class="chat-body" id="chatBody">
@@ -566,8 +671,8 @@ footer li a:hover{color:var(--violet2)}
   <!-- TESTIMONIAL -->
   <section id="testimonial">
     <div class="sec-head reveal">
-      <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linejoin="round"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1z"/></svg>Client Feedback &amp; Results</span>
-      <h2>Trusted By <span class="grad">Professionals</span></h2>
+      <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linejoin="round"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1z"/></svg>Testimonials</span>
+      <h2>Client <span class="grad">Feedback</span></h2>
     </div>
     <figure class="testi reveal">
       <div class="stars" aria-label="5 star recommendation">★★★★★</div>
@@ -579,8 +684,8 @@ footer li a:hover{color:var(--violet2)}
   <!-- FAQ -->
   <section id="faq">
     <div class="sec-head reveal">
-      <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg>Frequently Asked Questions</span>
-      <h2>Everything You Need To Know About <span class="grad">Working With Me</span></h2>
+      <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg>FAQ</span>
+      <h2>Quick <span class="grad">Answers</span></h2>
       <p>Honest answers on services, timelines and starting.</p>
     </div>
     <div class="faq-list">
@@ -615,7 +720,6 @@ footer li a:hover{color:var(--violet2)}
           </label>
           <label>Message <textarea name="message" rows="4" required placeholder="Assalam-o-Alaikum Ahmed, we have a SOC Analyst opening…"></textarea></label>
           <button class="btn btn-plum" type="submit" style="width:100%">Send Message <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-          <p class="form-note">Flow: <code>POST /api/contact</code> → Supabase <code>contact_messages</code> → Resend email to Ahmed. If the endpoint isn't live here, you get a one-tap LinkedIn / email fallback — nothing is lost.</p>
           <div class="status" id="formStatus" role="status"></div>
         </form>
         <p class="form-note" style="margin-top:14px">Messages are saved securely to Supabase and delivered by email via Resend.</p>
@@ -708,6 +812,7 @@ function addMsg(text, who){
 }
 function aiAnswer(q){
   var s = q.toLowerCase();
+  if (s.indexOf('digital') > -1 || s.indexOf('future') > -1) return "Digital Futures is a digital initiative Ahmed is working on. The full project overview will be shared once confirmed — you can ask about it directly on WhatsApp or the contact form.";
   if (s.indexOf('medigen') > -1) return "MediGen AI Pro is Ahmed's pharmacy ERP &amp; POS, live at a real pharmacy — billing, FEFO expiry control, cash drawer and a Gemini AI assistant, verified by 2,509 automated tests with CI green. It runs on Windows and Android.";
   if (s.indexOf('admitsecure') > -1 || s.indexOf('admission') > -1) return "AdmitSecure is Ahmed's secure admissions platform design — role-based access for 5 secured roles, separation-of-duties campaign approval and a PII-redacted AI assistant, built on Vercel, Supabase (RLS) and Resend. Designed for 100K applicants and 500K messages per cycle.";
   if (s.indexOf('stamp') > -1) return "The Stamp Duty Calculator is Ahmed's web tool for fast, accurate UK stamp duty (SDLT) calculations with a clean, mobile-first interface.";
@@ -835,7 +940,7 @@ document.getElementById('copyEmailBtn').addEventListener('click', function(){
 document.getElementById('contactForm').addEventListener('submit', function(e){
   e.preventDefault();
   var form = e.target, status = document.getElementById('formStatus');
-  var data = { name: form.name.value.trim(), email: form.email.value.trim(), topic: form.topic.value, message: form.message.value.trim() };
+  var data = { name: form.name.value.trim(), email: form.email.value.trim(), topic: form.topic.value, subject: form.topic.value, message: form.message.value.trim() };
   status.className = 'status show warn';
   if (!data.name || !data.email || !data.message || data.email.indexOf('@') < 1) {
     status.textContent = "Please fill your name, a valid email, and a message first.";
@@ -934,6 +1039,121 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
       requestAnimationFrame(loop);
     })();
   } catch (e) { /* 3D is decorative only — page works without it */ }
+})();
+</script>
+
+<script>
+/* ---------- v2 enhancements ---------- */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // Scroll progress + nav shadow
+  var bar = document.getElementById('progress'), nav = document.querySelector('nav');
+  function onScroll(){
+    var max = document.documentElement.scrollHeight - innerHeight;
+    if (bar) bar.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
+    if (nav) nav.classList.toggle('scrolled', scrollY > 8);
+  }
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // Staggered reveal inside grids
+  document.querySelectorAll('.svc-grid,.work-grid,.metrics,.stats').forEach(function(g){
+    Array.prototype.forEach.call(g.children, function(c, i){
+      c.style.setProperty('--d', (i * 90) + 'ms');
+    });
+  });
+
+  if (!fine || reduce) return;
+
+  // 3D tilt + cursor glow on cards and photo
+  function tilt(el, max){
+    el.addEventListener('mousemove', function(e){
+      var r = el.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      el.style.setProperty('--rx', ((0.5 - y) * max).toFixed(2) + 'deg');
+      el.style.setProperty('--ry', ((x - 0.5) * max).toFixed(2) + 'deg');
+      el.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+      el.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+    });
+    el.addEventListener('mouseleave', function(){
+      el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg');
+    });
+  }
+  document.querySelectorAll('.svc,.work-card').forEach(function(el){ tilt(el, 5); });
+  document.querySelectorAll('.case').forEach(function(el){ tilt(el, 1.2); });
+  var photo = document.querySelector('.photo-card');
+  if (photo) tilt(photo, 9);
+
+  // Hero spotlight follows the cursor
+  var hero = document.querySelector('.hero');
+  if (hero){
+    var spot = document.createElement('div');
+    spot.className = 'spot'; spot.setAttribute('aria-hidden', 'true');
+    hero.insertBefore(spot, hero.firstChild);
+    hero.addEventListener('mousemove', function(e){
+      var r = hero.getBoundingClientRect();
+      spot.style.left = (e.clientX - r.left) + 'px';
+      spot.style.top = (e.clientY - r.top) + 'px';
+      spot.style.opacity = '1';
+    });
+    hero.addEventListener('mouseleave', function(){ spot.style.opacity = '0'; });
+  }
+})();
+</script>
+
+<script>
+/* ---------- v3 ---------- */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // Rotating focus words
+  var words = ['AI Automation', 'SaaS Analysis', 'SOC Defence', 'Secure Systems'];
+  var el = document.getElementById('rotWord'), i = 0;
+  if (el && !reduce) {
+    setInterval(function(){
+      el.classList.add('out');
+      setTimeout(function(){
+        i = (i + 1) % words.length;
+        el.textContent = words[i];
+        el.classList.remove('out');
+      }, 350);
+    }, 2600);
+  }
+
+  if (!fine || reduce) return;
+
+  // Smooth cursor ring
+  var ring = document.createElement('div');
+  ring.className = 'cursor'; ring.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(ring);
+  var tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+  function loop(){
+    cx += (tx - cx) * 0.22; cy += (ty - cy) * 0.22;
+    ring.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
+    raf = (Math.abs(tx - cx) + Math.abs(ty - cy) > 0.1) ? requestAnimationFrame(loop) : null;
+  }
+  addEventListener('mousemove', function(e){
+    tx = e.clientX; ty = e.clientY; ring.classList.add('on');
+    if (!raf) raf = requestAnimationFrame(loop);
+  }, { passive: true });
+  document.addEventListener('mouseleave', function(){ ring.classList.remove('on'); });
+  document.querySelectorAll('a,button,.svc,.work-card,.case,.faq-q,.chip-q').forEach(function(n){
+    n.addEventListener('mouseenter', function(){ ring.classList.add('hot'); });
+    n.addEventListener('mouseleave', function(){ ring.classList.remove('hot'); });
+  });
+
+  // Magnetic primary buttons
+  document.querySelectorAll('.btn-plum').forEach(function(b){
+    b.addEventListener('mousemove', function(e){
+      var r = b.getBoundingClientRect();
+      var x = (e.clientX - r.left - r.width / 2) * 0.18;
+      var y = (e.clientY - r.top - r.height / 2) * 0.22;
+      b.style.transform = 'translate(' + x.toFixed(1) + 'px,' + (y - 2).toFixed(1) + 'px)';
+    });
+    b.addEventListener('mouseleave', function(){ b.style.transform = ''; });
+  });
 })();
 </script>
 </body>
