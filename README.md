@@ -18,9 +18,9 @@
 
 ## Watch the Demo
 
-https://github.com/user-attachments/assets/e41ddc40-ba55-42b7-9fee-1652efaf9a88
+https://github.com/user-attachments/assets/d723a08a-8952-4021-bea0-bfc8bab2d491
 
-*The official 37-second demo film — a guided tour of the live site. Also attached to [Release v1.1.0](https://github.com/ahmedbux927/ahmed-bux-portfolio/releases/tag/v1.1.0).*
+*Showreel 2026 — the official 60-second film: AI, SaaS and cybersecurity, featuring MediGen AI Pro and AdmitSecure. Also attached to [Release v1.2.0](https://github.com/ahmedbux927/ahmed-bux-portfolio/releases/tag/v1.2.0).*
 
 ## About
 
