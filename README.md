@@ -16,6 +16,12 @@
 
 ---
 
+## Watch the Demo
+
+https://github.com/user-attachments/assets/e41ddc40-ba55-42b7-9fee-1652efaf9a88
+
+*The official 37-second demo film — a guided tour of the live site. Also attached to [Release v1.1.0](https://github.com/ahmedbux927/ahmed-bux-portfolio/releases/tag/v1.1.0).*
+
 ## About
 
 The official portfolio of **Ahmed Bux** — an AI Specialist and SaaS Project Analyst who also brings frontline cybersecurity expertise (SOC operations, Elastic SIEM & Wazuh, Linux administration) to every system he builds. Based in Sukkur, Sindh, Pakistan; working remotely worldwide.
